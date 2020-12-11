@@ -18,7 +18,7 @@ export class PostResolver {
 
     @Mutation(() => Post)
     async createPost(@Ctx() { em }: ORMContext, @Arg('title') title: string): Promise<Post> {
-        const post = await em.create(Post, {title});
+        const post = em.create(Post, {title});
         try {
             await em.persistAndFlush(post);
             return post;
